@@ -1,0 +1,22 @@
+const express = require('express')
+const app = express()
+const http = require('http')
+const server = http.createServer(app)
+const { Server } = require("socket.io")
+const io = new Server(server)
+app.use(express.static('public'))
+
+io.on('connection', (socket) => {
+    let username, roomname;
+    socket.on('join', (message)=>{
+        username = message.username;
+        roomname = message.roomname;
+        console.log(`${username} connected in ${roomname}`);
+    })
+
+    socket.on('disconnect', (message) =>{
+        console.log(`${username} disconnected from ${roomname}`);
+    })
+});
+
+server.listen(3000)
