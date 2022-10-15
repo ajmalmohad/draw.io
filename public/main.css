@@ -2,6 +2,10 @@
     overflow-y: hidden;
 }
 
+body{
+    font-family: sans-serif;
+}
+
 #main{
     position: relative;
     height: 100vh;
@@ -25,14 +29,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: skyblue;
 }
 
 input[type="text"]{
-    padding: 10px;
+    padding: 16px;
     width: 90%;
     border-radius: 20px;
     border: none;
+    margin: 0 10px;
+    background: gainsboro;
+    outline: none;
+}
+
+input[type="text"]:focus{
+    outline: none;
 }
 
 .submit-img{
@@ -46,29 +56,42 @@ input[type="text"]{
 #chat .message{
     display: flex;
     height: auto;
+    width: fit-content;
+    min-width: 100px;
+    max-width: 50%;
     word-wrap: break-word;
     flex-direction: column;
-    background: rgb(224, 224, 224);
+    background: rgb(3, 61, 251);
     padding:10px;
     white-space: initial;
     border-radius: 10px;
     margin: 10px 0;
+    color:white;
 }
 
 #chat .message>*{
     margin:0;
     padding:0;
+    font-size: 14px;
 }
 
 #chat .message .author{
-    font-size: 14px;
+    font-size: 12px;
+    font-style: italic;
     font-weight: 600;
     margin-bottom: 6px;
+    text-transform: capitalize;
 }
 
 #chat .message .time{
     font-size: 12px;
-    color: gray;
+    color: rgb(200, 200, 200);
     width: auto;
     margin-top: 6px;
+}
+
+@media only screen and (max-width:600px){
+    #chat .message{
+        max-width: 70%;
+    }
 }
