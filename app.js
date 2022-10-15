@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const http = require('http')
+const moment = require('moment')
 const server = http.createServer(app)
 const { Server } = require("socket.io")
 const io = new Server(server)
@@ -11,7 +12,13 @@ io.on('connection', (socket) => {
     socket.on('join', (message)=>{
         username = message.username;
         roomname = message.roomname;
+        socket.join(roomname);
         console.log(`${username} connected in ${roomname}`);
+        io.sockets.in(roomname).emit('connectToRoom', "You are in room " + roomname);
+    })
+
+    socket.on('message', (message) =>{
+        io.sockets.in(roomname).emit('textMessage', {text: message, author: username, time:moment().format('h:mm a')  })
     })
 
     socket.on('disconnect', (message) =>{
@@ -19,4 +26,4 @@ io.on('connection', (socket) => {
     })
 });
 
-server.listen(3000)
+server.listen(3000,'192.168.29.249')
