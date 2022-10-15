@@ -90,6 +90,15 @@ input[type="text"]:focus{
     margin-top: 6px;
 }
 
+.mine{
+    background: gainsboro !important;
+    color:black !important;
+}
+
+#chat .mine .time{
+    color: rgb(103, 103, 103);
+}
+
 @media only screen and (max-width:600px){
     #chat .message{
         max-width: 70%;

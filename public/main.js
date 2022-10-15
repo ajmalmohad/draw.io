@@ -1,9 +1,10 @@
 var socket = io();
+let username, roomname;
 
 function getParams() {
     let params = new URLSearchParams(document.location.search);
-    let username = params.get("username");
-    let roomname = params.get("roomname");
+    username = params.get("username");
+    roomname = params.get("roomname");
     return { username, roomname }
 }
 
@@ -41,6 +42,9 @@ socket.on('connectToRoom', (message) => {
 socket.on('textMessage', (message) => {
     let div = document.createElement('div')
     div.classList.add('message')
+    if(message.author==username){
+        div.classList.add('mine')
+    }
     div.innerHTML = `
     <p class="author">${message.author}</p>
     <p>${message.text}</p>
