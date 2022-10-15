@@ -8,11 +8,10 @@ function getParams(){
 }
 
 let chatbox = document.getElementById('chat')
-
-let message = document.getElementById('message')
-message.addEventListener('submit', (e)=>{
-    e.preventDefault();
+let message = document.getElementById('submit-img')
+message.addEventListener('click', (e)=>{
     let textbox = document.getElementById('text')
+    console.log(textbox.value);
     socket.emit('message', textbox.value)
     textbox.value = ""
     textbox.focus()
@@ -28,10 +27,11 @@ socket.on('textMessage', (message)=>{
     let div = document.createElement('div')
     div.classList.add('message')
     div.innerHTML = `
-    <p>${message.author}</p>
+    <p class="author">${message.author}</p>
     <p>${message.text}</p>
-    <p>${message.time}</p>
+    <p class="time">${message.time}</p>
     `
+    console.log(div);
     chatbox.appendChild(div)
     chat.scrollTop = chat.scrollHeight;
 })

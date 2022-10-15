@@ -10,10 +10,10 @@
 <body>
     <div class="main">
         <div id="chat"></div>
-        <form id="message">
-            <input id="text" type="text" name="message" required/>
-            <input type="submit" value="Submit" required/>
-        </form>
+        <div id="message">
+            <input id="text" type="text" name="message" placeholder="Type a message" required/>
+            <img class="submit-img" id="submit-img" src="./send.svg" alt="Send" />
+        </div>
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="main.js"></script>

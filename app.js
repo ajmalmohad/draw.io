@@ -14,7 +14,6 @@ io.on('connection', (socket) => {
         roomname = message.roomname;
         socket.join(roomname);
         console.log(`${username} connected in ${roomname}`);
-        io.sockets.in(roomname).emit('connectToRoom', "You are in room " + roomname);
     })
 
     socket.on('message', (message) =>{
