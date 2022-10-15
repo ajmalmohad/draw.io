@@ -46,9 +46,11 @@ input[type="text"]{
 #chat .message{
     display: flex;
     height: auto;
+    word-wrap: break-word;
     flex-direction: column;
     background: rgb(224, 224, 224);
     padding:10px;
+    white-space: initial;
     border-radius: 10px;
     margin: 10px 0;
 }
