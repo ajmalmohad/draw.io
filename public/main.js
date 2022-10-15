@@ -12,8 +12,10 @@ let chatbox = document.getElementById('chat')
 let message = document.getElementById('message')
 message.addEventListener('submit', (e)=>{
     e.preventDefault();
-    let text = document.getElementById('text').value;
-    socket.emit('message', text)
+    let textbox = document.getElementById('text')
+    socket.emit('message', textbox.value)
+    textbox.value = ""
+    textbox.focus()
 })
 
 socket.emit('join', getParams())
@@ -31,4 +33,5 @@ socket.on('textMessage', (message)=>{
     <p>${message.time}</p>
     `
     chatbox.appendChild(div)
+    chat.scrollTop = chat.scrollHeight;
 })
