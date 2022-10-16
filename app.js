@@ -25,4 +25,4 @@ io.on('connection', (socket) => {
     })
 });
 
-server.listen(3000, '192.168.29.60')
+server.listen(3000)
